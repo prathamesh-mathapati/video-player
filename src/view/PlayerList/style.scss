@@ -1,0 +1,32 @@
+.player-list{
+    border: 1px solid #ccc;
+    margin: 0px 10px;
+    border-radius: 10px;
+    height: 790px;
+    overflow-y: auto;
+    .player-list-header{
+border-bottom: 1px solid #ccc;
+margin: auto;
+font-size: 22px;
+padding: 10px;
+    }
+    .player-list-header-map{
+        display: flex;
+        padding: 10px;
+        gap: 20px;
+        height: 70px;
+        img{
+            width: 120px;
+            border-radius: 5px;
+
+        }
+        h4{
+            font-size: 16px;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          
+        }
+    }
+}

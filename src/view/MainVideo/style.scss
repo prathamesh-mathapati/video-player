@@ -1,0 +1,174 @@
+.main-videos {
+    display: grid;
+    grid-template-columns: 75% 1fr;
+    margin: 30px;
+
+    .main-full-videos {
+        .main-thumb {
+            width: 100%;
+            // height: auto;
+            min-height: 700px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .video-main-play {
+            position: relative;
+
+            .video-player-control-bar {
+                position: absolute;
+                bottom: 7px;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background: black;
+
+
+                .video-player-progress-bar-main {
+                    background-color: #ccc;
+                    width: 100%;
+                    height: 4px;
+                    cursor: pointer;
+
+                    .video-player-progress-bar-main-b {
+                        background-color: #0f6fe7;
+                        height: 4px;
+                        width: 99%;
+                        position: relative;
+                        // overflow: hidden;s
+
+                        &::before {
+                            content: " ";
+                            position: absolute;
+                            top: -5px;
+                            right: 0;
+                            width: 15px;
+                            height: 15px;
+                            border-radius: 50%;
+                            background-color: #0f6fe7;
+
+
+                        }
+
+                    }
+                }
+
+                .video-player-control {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 6px;
+                    width: 100%;
+
+                    .frist-control-section {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 190px;
+                        gap: 10px;
+
+                        .video-player-audio-speaker {
+                            display: flex;
+                            justify-content: center;
+
+                            input {
+                                width: 52px;
+                            }
+
+                            .speaker-incon {
+                                font-size: 26px;
+                                color: white;
+                                stroke: white;
+                                cursor: pointer;
+                            }
+
+
+                        }
+
+                        .timer-video {
+                            color: white !important;
+                        }
+                    }
+
+                    .secont-control-section {
+                        display: flex;
+                        gap: 10px;
+                        align-items: center;
+                        width: 190px;
+
+                        .play-icon {
+                            font-size: 20px;
+                            color: white;
+                            cursor: pointer;
+
+                        }
+
+                        .arrow {
+                            font-size: 25px;
+                            color: white;
+                            cursor: pointer;
+
+                        }
+                    }
+
+                    .third-control-section {
+                        width: 190px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-end;
+                        gap: 21px;
+                        margin-right: 10px;
+
+                        svg {
+                            color: white;
+                            stroke: white;
+                            cursor: pointer;
+
+                        }
+
+                        .dropdown {
+                            position: relative;
+                            display: inline-block;
+                            color: white;
+                            cursor: pointer;
+
+                        }
+
+                        .dropdown-content {
+                            position: absolute;
+                            background-color: #f9f9f9;
+                            min-width: 100px;
+                            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                            padding: 12px 16px;
+                            z-index: 1;
+                            color: black;
+                            top: -220px;
+                            left: -36px;
+                            border-radius: 10px;
+                        }
+
+                        .dropdown:hover .dropdown-content {
+                            display: block;
+                        }
+
+                    }
+                }
+            }
+
+        }
+
+    }
+
+    .descriptions {
+        text-align: justify;
+    }
+
+}
+
+.vt-1 {
+    padding-top: 12px;
+}
