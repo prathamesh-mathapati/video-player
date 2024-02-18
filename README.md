@@ -1,8 +1,8 @@
 # Getting Started with Create React App
 # Install node 
-#  live link
+#  live link : (https://prathamesh-mathapati.github.io/video-player/)
 
-[https://prathamesh-mathapati.github.io/video-player/)
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
