@@ -2,19 +2,22 @@
     border: 1px solid #ccc;
     margin: 0px 10px;
     border-radius: 10px;
-    height: 790px;
-    overflow-y: auto;
+   
     .player-list-header{
-border-bottom: 1px solid #ccc;
-margin: auto;
-font-size: 22px;
-padding: 10px;
+        border-bottom: 1px solid #ccc;
+        margin: auto;
+        font-size: 22px;
+        padding: 10px;
+       
     }
     .player-list-header-map{
         display: flex;
         padding: 10px;
         gap: 20px;
         height: 70px;
+        overflow: auto;
+        border-bottom: 1px solid #ccc;
+       
         img{
             width: 120px;
             border-radius: 5px;
@@ -29,4 +32,10 @@ padding: 10px;
           
         }
     }
+    .player-list-main{
+        height: 650px;
+        overflow-y: auto;
+    
+    }
+   
 }

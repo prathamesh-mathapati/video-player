@@ -6,20 +6,16 @@ import { FaPlay } from 'react-icons/fa'
 import { FaPause } from 'react-icons/fa6'
 import { IoVolumeMute } from 'react-icons/io5'
 import { IoIosSkipBackward, IoIosSkipForward } from 'react-icons/io'
-
-import {
-  BiSolidSkipNextCircle,
-  BiSolidSkipPreviousCircle
-} from 'react-icons/bi'
 import { mediaJSON } from '../../data'
-import { DndContext, closestCorners } from '@dnd-kit/core'
 
 export const MainVideo = () => {
   const videoRef = useRef(null)
   const [videoData, setVideoData] = useState({
     ...mediaJSON.categories[0].videos[0],
-    index: 0
+    id: 0
   })
+  // console.log(videoData,"videoData");
+  const [mediaJSON1,setMediaJSON]=useState(mediaJSON.categories[0].videos)
   const [videoObj, setVideoObj] = useState({
     videoPause: true,
     videoMute: true,
@@ -78,7 +74,14 @@ export const MainVideo = () => {
   }
 
   const handleProgressBartimer = e => {
-    console.log(e.offsetX / e.target.clientWidth * videoRef.current.duration)
+    console.log(e)
+    let timelineWidth= e.target.clientWidth
+
+    // videoObj.videoProgressBar=
+    videoRef.current.currentTime=e.clientX / timelineWidth * videoRef.current.duration
+    setVideoObj(videoObj)
+    // console.log();
+    
     // videoRef.current.currentTime = 0
   }
 
@@ -97,47 +100,47 @@ export const MainVideo = () => {
     return `${hours}:${min}:${sec}`
   }
 
-  React.useEffect(
-    () => {
-      setVideoObj({
-        videoPause: true,
-        videoMute: true,
-        videoProgressBar: 0,
-        time: '00:00',
-        totleTime: '00:00'
-      })
-      // console.log(videosData)
-    },
-    [videoData]
-  )
 
   const videoEndhandle = () => {
     setVideoData({
-      ...mediaJSON.categories[0].videos[videoData.index + 1],
-      index: videoData.index + 1
+      ...mediaJSON1[videoData.id + 1],
+      id: videoData.id + 1
+    })
+    setVideoObj({
+      videoPause: true,
+      videoMute: true,
+      videoProgressBar: 0,
+      time: '00:00',
+      totleTime: '00:00'
     })
 
-    // handelVidoePause()
-    let playPromise = videoRef.current.play()
+    
+  }
 
+  React.useEffect(()=>{
+    let playPromise = videoRef.current.play()
     if (playPromise !== undefined) {
       playPromise
         .then(_ => {
           // Automatic playback started!
           // Show playing UI.
-          videoRef.current.play()
+       videoRef.current.play()
           setVideoObj({ ...videoObj, videoPause: videoRef.current.paused })
         })
         .catch(error => {
+        
           // Auto-play was prevented
           // Show paused UI.
           videoRef.current.pause()
           setVideoObj({ ...videoObj, videoPause: videoRef.current.paused })
         })
     }
-  }
+  },[])
+
+
   return (
     <div className='main-videos'>
+    
       <div className='main-full-videos vt-1'>
         <div className='video-main-play'>
           <video
@@ -146,17 +149,21 @@ export const MainVideo = () => {
             ref={videoRef}
             onTimeUpdate={handleProgressBar}
             onEnded={videoEndhandle}
-            autoPlay
+            onStalled={handelVidoePause}
+            autoPlay 
+            poster={`https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/${videoData?.thumb}`}
+            
           />
+          
           <div className='video-player-control-bar'>
             <div
               className='video-player-progress-bar-main'
               onClick={handleProgressBartimer}
             >
-              {' '}<div
+              <div
                 className='video-player-progress-bar-main-b'
                 style={{ width: `${videoObj.videoProgressBar}%` }}
-              />
+              ><span style={{display:'none'}}>000</span></div>
             </div>
             <div className='video-player-control'>
               <div className='frist-control-section'>
@@ -188,7 +195,7 @@ export const MainVideo = () => {
                   className='arrow'
                   onClick={() => handleSkip(true)}
                 />
-                {videoObj.videoPause
+                {videoRef?.current?.paused
                   ? <FaPlay className='play-icon' onClick={handelVidoePause} />
                   : <FaPause
                     className='play-icon'
@@ -202,7 +209,7 @@ export const MainVideo = () => {
               </div>
               <div className='third-control-section'>
                 <div class='dropdown'>
-                  <span onClick={() => setShowSpeed(!showSpeed)}>Speed</span>
+                  <span onClick={() => setShowSpeed(!showSpeed)}>Speed {videoRef?.current?.playbackRate?videoRef?.current?.playbackRate:1}X</span>
                   {showSpeed &&
                     <div class='dropdown-content'>
                       <p onClick={() => handlespeed(0.5)}>0.5x</p>
@@ -268,18 +275,17 @@ export const MainVideo = () => {
         <h1>
           {videoData.title}
         </h1>
-        <p className='descriptions'>
+        {/* <p className='descriptions'>
           {videoData.description}
-        </p>
+        </p> */}
       </div>
 
       <div className='vt-1'>
-        <DndContext collisionDetection={closestCorners}>
           {' '}<PlayerList
-            mediaJSON={mediaJSON.categories[0].videos}
+            mediaJSON={mediaJSON1}
             setVideoData={setVideoData}
+            setMediaJSON={setMediaJSON}
           />
-        </DndContext>
       </div>
     </div>
   )

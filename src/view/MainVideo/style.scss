@@ -1,13 +1,13 @@
 .main-videos {
     display: grid;
-    grid-template-columns: 75% 1fr;
+    grid-template-columns: 1fr 369px;
     margin: 30px;
 
     .main-full-videos {
         .main-thumb {
             width: 100%;
             // height: auto;
-            min-height: 700px;
+            height: 600px;
             border-radius: 10px;
         }
 
@@ -18,7 +18,9 @@
 
         .video-main-play {
             position: relative;
-
+video{
+    background-color: black;
+}
             .video-player-control-bar {
                 position: absolute;
                 bottom: 7px;
@@ -46,7 +48,7 @@
                             content: " ";
                             position: absolute;
                             top: -5px;
-                            right: 0;
+                            right: -15px;
                             width: 15px;
                             height: 15px;
                             border-radius: 50%;
@@ -172,3 +174,66 @@
 .vt-1 {
     padding-top: 12px;
 }
+
+
+//for mobile devices 
+@media only screen and (min-width: 320px) and (max-width: 520px) {
+    .main-videos{
+      grid-template-columns: 1fr;
+      .main-full-videos{
+.video-main-play{
+    .main-thumb{
+// width: ;
+min-height: 200px;
+    }
+    .video-player-control-bar{
+        .video-player-control{
+            width: 86%;
+        }
+    }
+    
+} 
+
+      } 
+    }
+}
+
+//medium deviecs
+@media only screen and (min-width: 521px) and (max-width: 767px) {
+    .main-videos{
+        margin: 0px;
+        grid-template-columns: 1fr;
+        .main-full-videos{
+  .video-main-play{
+      .main-thumb{
+  // width: ;
+  min-height: 200px;
+      }
+      .video-player-control-bar{
+        // width: fit-content;
+          .video-player-control{
+            gap: 5%;
+            justify-content: left;
+            .frist-control-section{
+                width: fit-content;
+            }
+              .secont-control-section{
+                width: fit-content;
+              }
+              .third-control-section{
+                width: fit-content;
+              }
+          }
+      }
+      
+  } 
+  
+        } 
+      }
+}
+
+/*For Ipad or tablet*/
+@media only screen and (min-width: 768px) and (max-width: 991px) {}
+
+//large devices
+@media only screen and (min-width: 991px) and (max-width: 1250px) {}

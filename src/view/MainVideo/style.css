@@ -1,11 +1,11 @@
 .main-videos {
   display: grid;
-  grid-template-columns: 75% 1fr;
+  grid-template-columns: 1fr 369px;
   margin: 30px;
 }
 .main-videos .main-full-videos .main-thumb {
   width: 100%;
-  min-height: 700px;
+  height: 600px;
   border-radius: 10px;
 }
 .main-videos .main-full-videos h1 {
@@ -14,6 +14,9 @@
 }
 .main-videos .main-full-videos .video-main-play {
   position: relative;
+}
+.main-videos .main-full-videos .video-main-play video {
+  background-color: black;
 }
 .main-videos .main-full-videos .video-main-play .video-player-control-bar {
   position: absolute;
@@ -40,7 +43,7 @@
   content: " ";
   position: absolute;
   top: -5px;
-  right: 0;
+  right: -15px;
   width: 15px;
   height: 15px;
   border-radius: 50%;
@@ -131,4 +134,42 @@
 
 .vt-1 {
   padding-top: 12px;
-}/*# sourceMappingURL=style.css.map */
+}
+
+@media only screen and (min-width: 320px) and (max-width: 520px) {
+  .main-videos {
+    grid-template-columns: 1fr;
+  }
+  .main-videos .main-full-videos .video-main-play .main-thumb {
+    min-height: 200px;
+  }
+  .main-videos .main-full-videos .video-main-play .video-player-control-bar .video-player-control {
+    width: 86%;
+  }
+}
+@media only screen and (min-width: 521px) and (max-width: 767px) {
+  .main-videos {
+    margin: 0px;
+    grid-template-columns: 1fr;
+  }
+  .main-videos .main-full-videos .video-main-play .main-thumb {
+    min-height: 200px;
+  }
+  .main-videos .main-full-videos .video-main-play .video-player-control-bar .video-player-control {
+    gap: 5%;
+    justify-content: left;
+  }
+  .main-videos .main-full-videos .video-main-play .video-player-control-bar .video-player-control .frist-control-section {
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  .main-videos .main-full-videos .video-main-play .video-player-control-bar .video-player-control .secont-control-section {
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  .main-videos .main-full-videos .video-main-play .video-player-control-bar .video-player-control .third-control-section {
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+}
+/*For Ipad or tablet*//*# sourceMappingURL=style.css.map */
