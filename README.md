@@ -2,7 +2,7 @@
 # Install node 
 #  live link
 
-[https://github.com/prathamesh-mathapati/video-player/settings/pages)
+[https://prathamesh-mathapati.github.io/video-player/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
